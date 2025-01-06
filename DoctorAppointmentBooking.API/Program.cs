@@ -1,3 +1,4 @@
+using DoctorAppointmentManagement.Infrastructure.Extensions;
 using DoctorAvailability.API;
 using DoctorAvailability.DAL.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDoctorAvailabilityModule(builder.Configuration);
+builder.Services.AddDoctorAppointmentManagementModule(builder.Configuration);
 
 //builder.Services.AddDbContext<DoctorAvailabilityDBContext>(m => m.UseSqlServer(builder.Configuration
 //    .GetConnectionString("Default")));

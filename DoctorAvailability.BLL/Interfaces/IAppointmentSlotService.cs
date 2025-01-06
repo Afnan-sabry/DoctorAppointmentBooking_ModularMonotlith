@@ -1,5 +1,5 @@
 ﻿using DoctorAvailability.BLL.Dtos;
-using DoctorAvailability.BLL.Wrappers;
+using Shared.Infrastructure.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

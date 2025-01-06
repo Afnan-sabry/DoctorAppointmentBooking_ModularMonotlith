@@ -1,6 +1,6 @@
 ﻿using DoctorAvailability.BLL.Dtos;
 using DoctorAvailability.BLL.Interfaces;
-using DoctorAvailability.BLL.Wrappers;
+using Shared.Infrastructure.Wrappers;
 using DoctorAvailability.DAL.Models;
 using DoctorAvailability.DAL.Repositories.AppointmentSlotRepository;
 using System;
