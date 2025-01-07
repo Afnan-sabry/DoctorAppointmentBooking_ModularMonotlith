@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorAvailability.BLL.Dtos
+namespace AppointmentBooking.Application.Dtos
 {
-    public class GetAppointmentSlotsResponseDto
+    public class AvailableAppointmentSlotDto
     {
         public Guid Id { get; set; }
         public DateTime AppointmentDate { get; set; }

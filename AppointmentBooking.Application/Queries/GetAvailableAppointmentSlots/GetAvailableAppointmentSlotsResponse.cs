@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorAvailability.BLL.Dtos
+namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
 {
-    public class GetAppointmentSlotsResponseDto
+    internal class GetAvailableAppointmentSlotsResponse
     {
-        public Guid Id { get; set; }
+        public Guid AppointmentSlotId { get; set; }
         public DateTime AppointmentDate { get; set; }
 
         public Guid DoctorId { get; set; }
-        public bool IsReserved { get; set; }
         public decimal Cost { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace DoctorAvailability.BLL.Dtos
     public class AddAppointmentSlotDto
     {
         public Guid Id { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        public DateTime AppointmentDate { get; set; }
+
         public Guid DoctorId { get; set; }
         public bool IsReserved { get; set; }
         public decimal Cost { get; set; }

@@ -21,8 +21,7 @@ namespace DoctorAvailability.BLL.Services
                 Id = new Guid(),
                 DoctorId = model.DoctorId,
                 Cost = model.Cost,
-                From = model.From,
-                To = model.To,
+                AppointmentDate=model.AppointmentDate,
                 IsReserved = false,
             };
            await appointmentSlotRepository.AddAppointmentSlot(data);
@@ -41,8 +40,7 @@ namespace DoctorAvailability.BLL.Services
                     Id = slot.Id,
                     DoctorId = slot.DoctorId,
                     Cost = slot.Cost,
-                    From = slot.From,
-                    To = slot.To,
+                    AppointmentDate = slot.AppointmentDate,
                     IsReserved = slot.IsReserved,
 
                 }));
