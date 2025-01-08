@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
 {
-    internal class GetAvailableAppointmentSlotsResponse
+    public class GetAvailableAppointmentSlotsResponse
     {
         public Guid AppointmentSlotId { get; set; }
         public DateTime AppointmentDate { get; set; }

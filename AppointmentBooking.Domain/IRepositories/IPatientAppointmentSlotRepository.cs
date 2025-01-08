@@ -11,6 +11,7 @@ namespace AppointmentBooking.Domain.IRepositories
     public interface IPatientAppointmentSlotRepository
     {
         Task<bool> BookAppointmentSlot(PatientAppointmentSlot patientAppointmentSlot);
+        Task<List<PatientAppointmentSlot>> GetPatientAppointmentSlots();
 
     }
 }

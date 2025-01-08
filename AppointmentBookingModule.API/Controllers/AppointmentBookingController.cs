@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace AppointmentBookingModule.API.Controllers
 {
@@ -20,9 +21,9 @@ namespace AppointmentBookingModule.API.Controllers
             return Ok(mediatr.Send(command));
         }
         [HttpGet]
-        public IActionResult GetAvailableAppointmentSlots(GetAvailableAppointmentSlotsQuery query)
+        public IActionResult GetAvailableAppointmentSlots()
         {
-            return Ok(mediatr.Send(query));
+            return Ok(mediatr.Send(new GetAvailableAppointmentSlotsQuery ()));
         }
 
 

@@ -1,5 +1,6 @@
 ﻿
 using AppointmentBooking.Application.ExternalServiceInterfaces;
+using AppointmentBooking.Domain.IRepositories;
 using MediatR;
 using Shared.Infrastructure.Wrappers;
 using System;
@@ -10,11 +11,14 @@ using System.Threading.Tasks;
 
 namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
 {
-    internal class GetAvailableAppointmentSlotsQueryHandler(IBookingAppointmentSlotService bookingAppointmentSlotService) : IRequestHandler<GetAvailableAppointmentSlotsQuery, Response<List<GetAvailableAppointmentSlotsResponse>>>
+    public class GetAvailableAppointmentSlotsQueryHandler(IBookingAppointmentSlotService bookingAppointmentSlotService, IPatientAppointmentSlotRepository patientAppointmentSlotRepository) : IRequestHandler<GetAvailableAppointmentSlotsQuery, Response<List<GetAvailableAppointmentSlotsResponse>>>
     {
+
+
         public async Task<Response<List<GetAvailableAppointmentSlotsResponse>>> Handle(GetAvailableAppointmentSlotsQuery request, CancellationToken cancellationToken)
         {
-            var availableSlotsResponse =  await bookingAppointmentSlotService.GetAvailableAppointmentSlots();
+            var ss = await patientAppointmentSlotRepository.GetPatientAppointmentSlots();
+            var availableSlotsResponse = await bookingAppointmentSlotService.GetAvailableAppointmentSlots();
             if (!availableSlotsResponse.Succeeded) return new Response<List<GetAvailableAppointmentSlotsResponse>>([], false, availableSlotsResponse.Message);
 
             var availableSlots = availableSlotsResponse.Data.Select(x => new GetAvailableAppointmentSlotsResponse
@@ -24,7 +28,7 @@ namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
                 Cost = x.Cost,
                 AppointmentDate = x.AppointmentDate,
             }).ToList();
-            return new Response<List<GetAvailableAppointmentSlotsResponse>>(availableSlots,true,string.Empty);
+            return new Response<List<GetAvailableAppointmentSlotsResponse>>(availableSlots, true, string.Empty);
         }
     }
 }
