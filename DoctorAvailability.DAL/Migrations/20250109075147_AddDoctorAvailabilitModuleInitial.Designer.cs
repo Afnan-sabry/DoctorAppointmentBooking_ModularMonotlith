@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorAvailability.DAL.Migrations
 {
     [DbContext(typeof(DoctorAvailabilityDBContext))]
-    [Migration("20250104093115_AddDoctorAvailabilitModuleContext")]
-    partial class AddDoctorAvailabilitModuleContext
+    [Migration("20250109075147_AddDoctorAvailabilitModuleInitial")]
+    partial class AddDoctorAvailabilitModuleInitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,20 +31,17 @@ namespace DoctorAvailability.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("AppointmentDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("From")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("IsReserved")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime>("To")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

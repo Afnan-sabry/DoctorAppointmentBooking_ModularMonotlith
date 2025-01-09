@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace DoctorAvailability.DAL.Persistence
 {
-    public  class DoctorAvailabilityDBContext(DbContextOptions options) : ModuleDBContext(options)
+    public  class DoctorAvailabilityDBContext(DbContextOptions<DoctorAvailabilityDBContext> options) : ModuleDBContext(options)
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
      
         public DbSet<Doctor> Doctors { get; set; }

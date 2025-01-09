@@ -13,7 +13,7 @@ namespace AppointmentBooking.Infrastructure.Integration.Services
     {
         public Task<Response<List<AvailableAppointmentSlotDto>>> GetAvailableAppointmentSlots()
         {
-            throw new NotImplementedException();
+           return Task.FromResult( new Response<List<AvailableAppointmentSlotDto>>([],true,""));
         }
     }
 }

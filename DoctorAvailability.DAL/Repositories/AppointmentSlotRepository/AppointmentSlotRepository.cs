@@ -21,7 +21,7 @@ namespace DoctorAvailability.DAL.Repositories.AppointmentSlotRepository
 
         public async Task<List<AppointmentSlot>> GetDoctorAppointmentSlots(Guid doctorId)
         {
-           var data= await dbContext.AppointmentSlots.Where(a=>a.Equals(doctorId)).ToListAsync();
+           var data= await dbContext.AppointmentSlots.Where(a=>a.Id==doctorId).ToListAsync();
             return data;
         }
     }

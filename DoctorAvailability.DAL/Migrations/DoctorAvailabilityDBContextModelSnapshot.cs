@@ -28,20 +28,17 @@ namespace DoctorAvailability.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("AppointmentDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("From")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("IsReserved")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime>("To")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

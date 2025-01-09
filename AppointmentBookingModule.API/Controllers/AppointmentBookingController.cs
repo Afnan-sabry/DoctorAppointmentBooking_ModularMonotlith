@@ -2,6 +2,7 @@
 using AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,32 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace AppointmentBookingModule.API.Controllers
 {
-     [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AppointmentBookingController(IMediator mediatr) : ControllerBase
     {
         [HttpPost]
-        public IActionResult BookSlot(BookAppointmentCommand command)
+        public async Task<IActionResult> BookSlot(BookAppointmentCommand command)
         {
             return Ok(mediatr.Send(command));
         }
         [HttpGet]
-        public IActionResult GetAvailableAppointmentSlots()
+        public async Task<IActionResult> GetAvailableAppointmentSlots()
         {
-            return Ok(mediatr.Send(new GetAvailableAppointmentSlotsQuery ()));
+            return Ok(mediatr.Send(new GetAvailableAppointmentSlotsQuery()));
         }
 
 
+    }
+
+    public class WeatherForecasts
+    {
+        public DateOnly Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+
+        public string? Summary { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AppointmentBooking.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAppointmentBookingModule : Migration
+    public partial class AddAppointmentBookingModuleInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

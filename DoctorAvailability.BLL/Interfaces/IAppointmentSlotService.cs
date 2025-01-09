@@ -11,6 +11,6 @@ namespace DoctorAvailability.BLL.Interfaces
     public interface IAppointmentSlotService
     {
         public  Task<Response<Guid>> AddAppointmentSlot(AddAppointmentSlotDto model);
-        public  Task<Response<List<GetAppointmentSlotsResponseDto>>> GetDoctorAppointmentSlots(Guid doctorId);
+        public  Task<Response< List<GetAppointmentSlotsResponseDto>>> GetDoctorAppointmentSlots(Guid doctorId);
     }
 }

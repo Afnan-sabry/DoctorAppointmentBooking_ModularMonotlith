@@ -44,7 +44,7 @@ namespace DoctorAvailability.BLL.Services
                     IsReserved = slot.IsReserved,
 
                 }));
-            return new Response<List<GetAppointmentSlotsResponseDto>> (data,true);
+            return  new Response<List<GetAppointmentSlotsResponseDto>> (data,true);
 
         }
     }

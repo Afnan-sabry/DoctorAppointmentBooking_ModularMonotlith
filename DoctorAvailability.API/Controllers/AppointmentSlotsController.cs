@@ -5,19 +5,19 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 namespace DoctorAvailability.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AppointmentSlotsController(IAppointmentSlotService appointmentSlotService) : ControllerBase
     {
         [HttpPost]
-        public IActionResult AddAppointmentSlot(AddAppointmentSlotDto model)
+        public async Task<IActionResult> AddAppointmentSlot(AddAppointmentSlotDto model)
         {
-            return Ok(appointmentSlotService.AddAppointmentSlot(model));
+            return Ok(await appointmentSlotService.AddAppointmentSlot(model));
         }
         [HttpGet]
-        public IActionResult GetDoctorAppointmentSlots(Guid doctorId)
+        public async Task< IActionResult> GetDoctorAppointmentSlots(Guid doctorId)
         {
-            return Ok(appointmentSlotService.GetDoctorAppointmentSlots(doctorId));
+            return Ok(await appointmentSlotService.GetDoctorAppointmentSlots(doctorId));
         }
 
 

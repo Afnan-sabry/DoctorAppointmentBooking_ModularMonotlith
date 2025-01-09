@@ -23,7 +23,7 @@ namespace AppointmentBooking.Infrastructure.Repositories
 
         public async Task<List<PatientAppointmentSlot>> GetPatientAppointmentSlots()
         {
-            return await context.Set<PatientAppointmentSlot>().ToListAsync();
+            return await context.PatientAppointmentSlots.ToListAsync();
         }
     }
 }

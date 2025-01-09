@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace AppointmentBooking.Infrastructure.Persistence
 {
-    public class AppointmentBookingDbContext(DbContextOptions options) : ModuleDBContext(options)
+    public class AppointmentBookingDbContext(DbContextOptions<AppointmentBookingDbContext> options) : ModuleDBContext(options)
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
-        DbSet<Patient> Patients {  get; set; }  
-        DbSet<PatientAppointmentSlot> PatientAppointmentSlots {  get; set; }  
+        public DbSet<Patient> Patients {  get; set; }  
+        public DbSet<PatientAppointmentSlot> PatientAppointmentSlots {  get; set; }  
 
     }
 }

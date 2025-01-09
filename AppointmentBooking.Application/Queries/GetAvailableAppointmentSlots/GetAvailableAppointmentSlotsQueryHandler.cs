@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
 {
-    public class GetAvailableAppointmentSlotsQueryHandler(IBookingAppointmentSlotService bookingAppointmentSlotService, IPatientAppointmentSlotRepository patientAppointmentSlotRepository) : IRequestHandler<GetAvailableAppointmentSlotsQuery, Response<List<GetAvailableAppointmentSlotsResponse>>>
+    public class GetAvailableAppointmentSlotsQueryHandler(IBookingAppointmentSlotService bookingAppointmentSlotService, IPatientAppointmentSlotRepository patientAppointmentSlotRepository) : IRequestHandler<GetAvailableAppointmentSlotsQuery, List<GetAvailableAppointmentSlotsResponse>>
     {
 
 
-        public async Task<Response<List<GetAvailableAppointmentSlotsResponse>>> Handle(GetAvailableAppointmentSlotsQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetAvailableAppointmentSlotsResponse>> Handle(GetAvailableAppointmentSlotsQuery request, CancellationToken cancellationToken)
         {
             var ss = await patientAppointmentSlotRepository.GetPatientAppointmentSlots();
             var availableSlotsResponse = await bookingAppointmentSlotService.GetAvailableAppointmentSlots();
-            if (!availableSlotsResponse.Succeeded) return new Response<List<GetAvailableAppointmentSlotsResponse>>([], false, availableSlotsResponse.Message);
+            if (!availableSlotsResponse.Succeeded) return [];// new Response<List<GetAvailableAppointmentSlotsResponse>>([], false, availableSlotsResponse.Message);
 
             var availableSlots = availableSlotsResponse.Data.Select(x => new GetAvailableAppointmentSlotsResponse
             {
@@ -28,7 +28,7 @@ namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
                 Cost = x.Cost,
                 AppointmentDate = x.AppointmentDate,
             }).ToList();
-            return new Response<List<GetAvailableAppointmentSlotsResponse>>(availableSlots, true, string.Empty);
+            return availableSlots;// new Response<List<GetAvailableAppointmentSlotsResponse>>(availableSlots, true, string.Empty);
         }
     }
 }
