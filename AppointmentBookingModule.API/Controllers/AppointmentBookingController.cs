@@ -19,12 +19,12 @@ namespace AppointmentBookingModule.API.Controllers
         [HttpPost]
         public async Task<IActionResult> BookSlot(BookAppointmentCommand command)
         {
-            return Ok(mediatr.Send(command));
+            return Ok ( await mediatr.Send(command));
         }
         [HttpGet]
         public async Task<IActionResult> GetAvailableAppointmentSlots()
         {
-            return Ok(mediatr.Send(new GetAvailableAppointmentSlotsQuery()));
+            return Ok(await mediatr.Send(new GetAvailableAppointmentSlotsQuery()));
         }
 
 

@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
 {
-    public record GetAvailableAppointmentSlotsQuery:IRequest<List<GetAvailableAppointmentSlotsResponse>>;
+    public record GetAvailableAppointmentSlotsQuery:IRequest<Response<List<GetAvailableAppointmentSlotsResponse>>>;
 }
