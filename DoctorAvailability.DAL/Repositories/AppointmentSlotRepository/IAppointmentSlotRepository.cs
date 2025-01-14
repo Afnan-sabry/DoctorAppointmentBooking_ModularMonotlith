@@ -10,6 +10,10 @@ namespace DoctorAvailability.DAL.Repositories.AppointmentSlotRepository
     public interface IAppointmentSlotRepository
     {
         public Task<Guid> AddAppointmentSlot(AppointmentSlot model);
+        Task<bool> BookAppointmentSlotById(Guid slotId);
+        Task<bool> UpdateAppointmentSlotStatus(Guid slotId,int status);
+        Task<List<AppointmentSlot>> GetAvailableAppointmentSlots();
         public Task<List<AppointmentSlot>> GetDoctorAppointmentSlots(Guid doctorId);
+        Task<List<AppointmentSlot>> GetDoctorUpcommingAppointmentSlots(Guid doctorId);
     }
 }

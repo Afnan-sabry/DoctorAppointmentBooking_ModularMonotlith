@@ -12,9 +12,10 @@ namespace AppointmentConfirmation.Infrastructure
 {
     public static class AddAppointmentConfirmationModuleExtension
     {
-        public static IServiceCollection AddAppointmentConfirmationModule(this IServiceCollection services, IConfiguration config)
+        public static async Task<IServiceCollection> AddAppointmentConfirmationModule(this IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<ISendNotificationService, SendNotificationService>();
+            await AppointmentConfirmationModuleStartup.Initialize();
             return services;
         }
     }

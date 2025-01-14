@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DoctorAppointmentManagement.Core\DoctorAppointmentManagement.Core.csproj" />
+    <ProjectReference Include="..\Shared.Messaging\Shared.Messaging.csproj" />
   </ItemGroup>
 
 </Project>

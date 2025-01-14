@@ -1,4 +1,5 @@
 ﻿using DoctorAppointmentManagement.Application.Mapper;
+using DoctorAppointmentManagement.Core.Domain.Enums;
 using DoctorAppointmentManagement.Core.Dtos;
 using DoctorAppointmentManagement.Core.Ports.InputPorts;
 using DoctorAppointmentManagement.Core.Ports.OutputPorts;
@@ -20,7 +21,7 @@ namespace DoctorAppointmentManagement.Application.Services.InputAdapters
             return slots.Select(a => a.ToDto()).ToList();   
         }
 
-        public async Task UpdateAppointmentSlotStatus(Guid appointmentdSlotId, string status)
+        public async Task UpdateAppointmentSlotStatus(Guid appointmentdSlotId, AppointmentSlotStatus status)
         {
           await appointmentSlotService.UpdateAppointmentSlotStatus(appointmentdSlotId,status);
 

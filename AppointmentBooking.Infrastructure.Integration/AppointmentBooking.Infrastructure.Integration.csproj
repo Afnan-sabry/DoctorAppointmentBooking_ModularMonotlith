@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppointmentBooking.Application\AppointmentBooking.Application.csproj" />
+    <ProjectReference Include="..\DoctorAvailability.BLL\DoctorAvailability.BLL.csproj" />
   </ItemGroup>
 
 </Project>

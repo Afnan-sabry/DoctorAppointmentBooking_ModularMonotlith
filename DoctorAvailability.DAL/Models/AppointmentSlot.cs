@@ -12,7 +12,9 @@ namespace DoctorAvailability.DAL.Models
 
         public Guid DoctorId { get; set; }
         public bool IsReserved { get; set; }
+        public int Status  { get; set; }
         public decimal Cost { get; set; }
         public Doctor Doctor { get; set; }
     }
 }
+

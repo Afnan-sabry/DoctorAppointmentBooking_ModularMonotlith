@@ -1,5 +1,9 @@
-﻿using DoctorAppointmentManagement.Core.Domain.Models;
+﻿using DoctorAppointmentManagement.Core.Domain.Enums;
+using DoctorAppointmentManagement.Core.Domain.Models;
 using DoctorAppointmentManagement.Core.Ports.OutputPorts;
+using Shared.Messaging.Contracts;
+
+using Shared.Messaging.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +12,34 @@ using System.Threading.Tasks;
 
 namespace DoctorAppointmentManagement.Adapters.Adapters.OutputAdapters
 {
-    internal class AppointmentSlotRepository : IAppointmentSlotRepository
+    internal class AppointmentSlotRepository(DoctorAvailability.BLL.Interfaces.IAppointmentSlotService appointmentSlotService) : IAppointmentSlotRepository
     {
-        Task<List<AppointmentSlot>> IAppointmentSlotRepository.GetUpcomingAppointmentsByDoctorId(Guid doctorId)
+       public async Task<List<AppointmentSlot>>GetUpcomingAppointmentsByDoctorId(Guid doctorId)
         {
-            throw new NotImplementedException();
+            var response = await appointmentSlotService.GetDoctorUpcommingAppointmentSlots(doctorId);
+            if (response == null || !response.Succeeded)
+                return [];
+
+            List<AppointmentSlot> data = [];
+            response.Data.ForEach(slot =>
+           data.Add(new AppointmentSlot()
+           {
+               Id = slot.Id,
+               DoctorId = slot.DoctorId,
+               Cost = slot.Cost,
+               AppointmentDate = slot.AppointmentDate,
+               IsReserved = slot.IsReserved,
+
+           }));
+            return data;
         }
 
-        Task IAppointmentSlotRepository.UpdateAppointmentSlotStatus(Guid appointmentdSlotId, string status)
+      public async Task UpdateAppointmentSlotStatus(Guid appointmentdSlotId, AppointmentSlotStatus status)
         {
-            throw new NotImplementedException();
+           RabbitMqPublisher rabbitMQPublisher = new();
+            await rabbitMQPublisher.PublishMessageAsync<AppointmentSlotStatusUpdated>(new() {AppointmentSlotId= appointmentdSlotId,Status= (int)status }, RabbitMQQueues.AppointmentStatusUpdated);
+           
+
         }
     }
 }

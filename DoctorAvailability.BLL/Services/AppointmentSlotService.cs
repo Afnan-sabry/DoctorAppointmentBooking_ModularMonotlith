@@ -21,31 +21,79 @@ namespace DoctorAvailability.BLL.Services
                 Id = new Guid(),
                 DoctorId = model.DoctorId,
                 Cost = model.Cost,
-                AppointmentDate=model.AppointmentDate,
+                AppointmentDate = model.AppointmentDate,
                 IsReserved = false,
             };
-           await appointmentSlotRepository.AddAppointmentSlot(data);
+            await appointmentSlotRepository.AddAppointmentSlot(data);
             return new Response<Guid>(data.Id, true);
 
         }
 
         public async Task<Response<List<GetAppointmentSlotsResponseDto>>> GetDoctorAppointmentSlots(Guid doctorId)
         {
-            var doctorSlots=await appointmentSlotRepository.GetDoctorAppointmentSlots(doctorId);
+            var doctorSlots = await appointmentSlotRepository.GetDoctorAppointmentSlots(doctorId);
             List<GetAppointmentSlotsResponseDto> data = [];
 
-               doctorSlots.ForEach(slot =>
-                data.Add( new GetAppointmentSlotsResponseDto()
-                {
-                    Id = slot.Id,
-                    DoctorId = slot.DoctorId,
-                    Cost = slot.Cost,
-                    AppointmentDate = slot.AppointmentDate,
-                    IsReserved = slot.IsReserved,
+            doctorSlots.ForEach(slot =>
+             data.Add(new GetAppointmentSlotsResponseDto()
+             {
+                 Id = slot.Id,
+                 DoctorId = slot.DoctorId,
+                 Cost = slot.Cost,
+                 AppointmentDate = slot.AppointmentDate,
+                 IsReserved = slot.IsReserved,
 
-                }));
-            return  new Response<List<GetAppointmentSlotsResponseDto>> (data,true);
+             }));
+            return new Response<List<GetAppointmentSlotsResponseDto>>(data, true);
 
         }
+        public async Task<bool> BookAppointmentSlot(Guid appointmentId)
+        {
+            return await appointmentSlotRepository.BookAppointmentSlotById(appointmentId);
+
+        }
+        public async Task<bool> UpdateAppointmentSlotStatus(Guid appointmentId,int status)
+        {
+            return await appointmentSlotRepository.UpdateAppointmentSlotStatus(appointmentId,status);
+
+        }
+
+        public async Task<Response<List<GetAppointmentSlotsResponseDto>>> GetAvailableAppointmentSlots()
+        {
+            var doctorSlots = await appointmentSlotRepository.GetAvailableAppointmentSlots();
+            List<GetAppointmentSlotsResponseDto> data = [];
+
+            doctorSlots.ForEach(slot =>
+             data.Add(new GetAppointmentSlotsResponseDto()
+             {
+                 Id = slot.Id,
+                 DoctorId = slot.DoctorId,
+                 Cost = slot.Cost,
+                 AppointmentDate = slot.AppointmentDate,
+                 IsReserved = slot.IsReserved,
+
+             }));
+            return new Response<List<GetAppointmentSlotsResponseDto>>(data, true);
+
+        }
+        public async Task<Response<List<GetAppointmentSlotsResponseDto>>> GetDoctorUpcommingAppointmentSlots(Guid doctorId)
+        {
+            var doctorSlots = await appointmentSlotRepository.GetDoctorUpcommingAppointmentSlots(doctorId);
+            List<GetAppointmentSlotsResponseDto> data = [];
+
+            doctorSlots.ForEach(slot =>
+             data.Add(new GetAppointmentSlotsResponseDto()
+             {
+                 Id = slot.Id,
+                 DoctorId = slot.DoctorId,
+                 Cost = slot.Cost,
+                 AppointmentDate = slot.AppointmentDate,
+                 IsReserved = slot.IsReserved,
+
+             }));
+            return new Response<List<GetAppointmentSlotsResponseDto>>(data, true);
+
+        }
+
     }
 }

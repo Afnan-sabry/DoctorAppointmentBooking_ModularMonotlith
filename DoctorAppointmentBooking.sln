@@ -33,19 +33,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shell", "Shell", "{50F2337D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorAppointmentManagement.Infrastructure", "DoctorAppointmentManagement.Infrastructure\DoctorAppointmentManagement.Infrastructure.csproj", "{FBA83F48-4EB5-4615-8DC5-6C812B82CCAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorAppointmentManagement.Application", "DoctorAppointmentManagement.Application\DoctorAppointmentManagement.Application.csproj", "{2FE6AD59-95D9-4AD9-B4EB-C90F7F1C18CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorAppointmentManagement.Application", "DoctorAppointmentManagement.Application\DoctorAppointmentManagement.Application.csproj", "{2FE6AD59-95D9-4AD9-B4EB-C90F7F1C18CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppointmentBookingModule", "AppointmentBookingModule", "{AD9D50D1-66F8-4313-9493-7685137F5B2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentBookingModule.API", "AppointmentBookingModule.API\AppointmentBookingModule.API.csproj", "{E15D0560-1F59-4EB9-B70B-1A1D075550F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentBookingModule.API", "AppointmentBookingModule.API\AppointmentBookingModule.API.csproj", "{E15D0560-1F59-4EB9-B70B-1A1D075550F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentBooking.Infrastructure", "AppointmentBooking.Infrastructure\AppointmentBooking.Infrastructure.csproj", "{4C251357-756C-4428-90D2-38E845DC849B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentBooking.Infrastructure", "AppointmentBooking.Infrastructure\AppointmentBooking.Infrastructure.csproj", "{4C251357-756C-4428-90D2-38E845DC849B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentBooking.Infrastructure.Integration", "AppointmentBooking.Infrastructure.Integration\AppointmentBooking.Infrastructure.Integration.csproj", "{CD33D058-B5C3-4255-9B79-8875D4757510}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentBooking.Infrastructure.Integration", "AppointmentBooking.Infrastructure.Integration\AppointmentBooking.Infrastructure.Integration.csproj", "{CD33D058-B5C3-4255-9B79-8875D4757510}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentBooking.Application", "AppointmentBooking.Application\AppointmentBooking.Application.csproj", "{3FD70E96-970F-403C-A1B4-EDF56EC9EBD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentBooking.Application", "AppointmentBooking.Application\AppointmentBooking.Application.csproj", "{3FD70E96-970F-403C-A1B4-EDF56EC9EBD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentBooking.Domain", "AppointmentBooking.Domain\AppointmentBooking.Domain.csproj", "{55B41A62-400C-4B28-B7C1-9CE153C3FB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentBooking.Domain", "AppointmentBooking.Domain\AppointmentBooking.Domain.csproj", "{55B41A62-400C-4B28-B7C1-9CE153C3FB64}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2F9E5C9C-770D-41E9-8A7B-96FD00DD2F5C}"
 EndProject
@@ -55,9 +55,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppointmentConfirmationModule", "AppointmentConfirmationModule", "{F2F158C7-6BB4-405B-A446-B020D7BA4C44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentConfirmation.Application", "AppointmentConfirmation.Application\AppointmentConfirmation.Application.csproj", "{27244CC9-EE9F-480E-95CF-BDD6325AC011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentConfirmation.Application", "AppointmentConfirmation.Application\AppointmentConfirmation.Application.csproj", "{27244CC9-EE9F-480E-95CF-BDD6325AC011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentConfirmation.Infrastructure", "AppointmentConfirmation.Infrastructure\AppointmentConfirmation.Infrastructure.csproj", "{78AFA632-032D-4632-8A2E-547B09C14F6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentConfirmation.Infrastructure", "AppointmentConfirmation.Infrastructure\AppointmentConfirmation.Infrastructure.csproj", "{78AFA632-032D-4632-8A2E-547B09C14F6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Messaging", "Shared.Messaging\Shared.Messaging.csproj", "{C3D812A8-3CAF-4BC5-A532-738B13A76ABD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{78AFA632-032D-4632-8A2E-547B09C14F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78AFA632-032D-4632-8A2E-547B09C14F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78AFA632-032D-4632-8A2E-547B09C14F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D812A8-3CAF-4BC5-A532-738B13A76ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D812A8-3CAF-4BC5-A532-738B13A76ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D812A8-3CAF-4BC5-A532-738B13A76ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D812A8-3CAF-4BC5-A532-738B13A76ABD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +165,7 @@ Global
 		{F2F158C7-6BB4-405B-A446-B020D7BA4C44} = {A6323408-18F4-424D-BFAB-1D80E6DA4DA8}
 		{27244CC9-EE9F-480E-95CF-BDD6325AC011} = {F2F158C7-6BB4-405B-A446-B020D7BA4C44}
 		{78AFA632-032D-4632-8A2E-547B09C14F6E} = {F2F158C7-6BB4-405B-A446-B020D7BA4C44}
+		{C3D812A8-3CAF-4BC5-A532-738B13A76ABD} = {2DB011AD-968A-4A35-9EC4-C4BE92D4AB87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C2B7D94-1D74-448F-9B8C-0CC16AF718C6}

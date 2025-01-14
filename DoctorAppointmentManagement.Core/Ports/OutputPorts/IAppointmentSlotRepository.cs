@@ -1,4 +1,5 @@
-﻿using DoctorAppointmentManagement.Core.Domain.Models;
+﻿using DoctorAppointmentManagement.Core.Domain.Enums;
+using DoctorAppointmentManagement.Core.Domain.Models;
 using DoctorAppointmentManagement.Core.Dtos;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,6 @@ namespace DoctorAppointmentManagement.Core.Ports.OutputPorts
     public interface IAppointmentSlotRepository
     {
         Task<List<AppointmentSlot>> GetUpcomingAppointmentsByDoctorId(Guid doctorId);
-        Task UpdateAppointmentSlotStatus(Guid appointmentdSlotId, string status);
+        Task UpdateAppointmentSlotStatus(Guid appointmentdSlotId, AppointmentSlotStatus status);
     }
 }

@@ -1,4 +1,5 @@
-﻿using DoctorAppointmentManagement.Core.Ports.InputPorts;
+﻿using DoctorAppointmentManagement.Core.Domain.Enums;
+using DoctorAppointmentManagement.Core.Ports.InputPorts;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace DoctorAppointmentManagement.API.Controllers
     public class AppointmentSlotManagementController(IAppointmentSlotService appointmentSlotService) : ControllerBase
     {
         [HttpPut]
-        public IActionResult UpdateAppointmentSlotStatus(Guid appointmentId,string status)
+        public IActionResult UpdateAppointmentSlotStatus(Guid appointmentId, AppointmentSlotStatus status)
         {
             return Ok(appointmentSlotService.UpdateAppointmentSlotStatus(appointmentId,status));
         }

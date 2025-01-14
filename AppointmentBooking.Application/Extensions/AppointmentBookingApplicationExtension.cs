@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Messaging;
 
 namespace AppointmentBooking.Application.Extensions
 {
@@ -13,6 +14,8 @@ namespace AppointmentBooking.Application.Extensions
     {
         public static IServiceCollection AddAppointmentBookingApplication(this IServiceCollection services, IConfiguration config)
         {
+            services.AddMessagingExtension(config);
+
             services.AddMediatR(configuration =>
             {
                 configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
