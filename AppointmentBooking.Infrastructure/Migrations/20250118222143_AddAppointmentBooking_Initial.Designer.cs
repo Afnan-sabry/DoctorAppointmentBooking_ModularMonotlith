@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppointmentBooking.Infrastructure.Migrations
 {
     [DbContext(typeof(AppointmentBookingDbContext))]
-    [Migration("20250109075351_AddAppointmentBookingModuleInitial")]
-    partial class AddAppointmentBookingModuleInitial
+    [Migration("20250118222143_AddAppointmentBooking_Initial")]
+    partial class AddAppointmentBooking_Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,10 @@ namespace AppointmentBooking.Infrastructure.Migrations
 
                     b.Property<DateTime>("ReservedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

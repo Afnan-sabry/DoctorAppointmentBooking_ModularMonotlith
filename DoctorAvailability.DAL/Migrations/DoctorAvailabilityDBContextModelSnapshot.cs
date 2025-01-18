@@ -40,6 +40,9 @@ namespace DoctorAvailability.DAL.Migrations
                     b.Property<bool>("IsReserved")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorAvailability.DAL.Migrations
 {
     [DbContext(typeof(DoctorAvailabilityDBContext))]
-    [Migration("20250109075147_AddDoctorAvailabilitModuleInitial")]
-    partial class AddDoctorAvailabilitModuleInitial
+    [Migration("20250118222003_AddDoctorAvailabityModuleDB_Initial")]
+    partial class AddDoctorAvailabityModuleDB_Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,9 @@ namespace DoctorAvailability.DAL.Migrations
 
                     b.Property<bool>("IsReserved")
                         .HasColumnType("bit");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
