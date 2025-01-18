@@ -23,30 +23,44 @@ namespace DoctorAvailability.API
             services.AddScoped<IAppointmentSlotRepository, AppointmentSlotRepository>();
             services.AddScoped<IAppointmentSlotService, AppointmentSlotService>();
 
-          
+
             return services;
         }
         public static async Task Initialize(this IApplicationBuilder app)
         {
-            var appointmentSlotService = app.ApplicationServices.GetRequiredService<IAppointmentSlotService>();
-            RabbitMqSubscriber _subscriber = new();
-            await _subscriber.Subscribe<AppointmentSlotBooked>(
-                 RabbitMQQueues.AppointmentBooked,
-                 message =>
-                 {
-                     Console.WriteLine($"appointment booking received: {message.AppointmentSlotId}");
-                     // Process the message
-                     appointmentSlotService.BookAppointmentSlot(message.AppointmentSlotId);
-                 });
+            try
+            {
 
-            await _subscriber.Subscribe<AppointmentSlotStatusUpdated>(
-                RabbitMQQueues.AppointmentStatusUpdated,
-                message =>
-                {
-                    Console.WriteLine($"AppointmentStatusUpdated  received: {message.AppointmentSlotId}");
-                    // Process the message
-                    appointmentSlotService.BookAppointmentSlot(message.AppointmentSlotId);
-                });
+                // var appointmentSlotService = app.ApplicationServices.GetRequiredService<IAppointmentSlotService>();
+                //    var appointmentSlotService = app.ApplicationServices.GetRequiredService<IAppointmentSlotService>();
+                using var scope = app.ApplicationServices.CreateScope();
+                var appointmentSlotService = scope.ServiceProvider.GetRequiredService<IAppointmentSlotService>();
+
+                RabbitMqSubscriber _subscriber = new();
+                await _subscriber.Subscribe<AppointmentSlotBooked>(
+                     RabbitMQQueues.AppointmentBooked,
+                     message =>
+                     {
+                         Console.WriteLine($"appointment booking received: {message.AppointmentSlotId}");
+                         // Process the message
+                         appointmentSlotService.BookAppointmentSlot(message.AppointmentSlotId);
+                     });
+
+                await _subscriber.Subscribe<AppointmentSlotStatusUpdated>(
+                    RabbitMQQueues.AppointmentStatusUpdated,
+                    async message =>
+                    {
+                        Console.WriteLine($"AppointmentStatusUpdated  received: {message.AppointmentSlotId}");
+                        // Process the message
+                        await appointmentSlotService.BookAppointmentSlot(message.AppointmentSlotId);
+                    });
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

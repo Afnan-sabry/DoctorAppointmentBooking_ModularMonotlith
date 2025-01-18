@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using AppointmentBooking.Infrastructure.Extensions;
 using System.Reflection;
 using AppointmentBooking.Application.Extensions;
+using AppointmentBooking.Application.Commands.BookAppointment;
+using MediatR;
 
 
 namespace AppointmentBookingModule.API
@@ -22,6 +24,7 @@ namespace AppointmentBookingModule.API
             {
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
+
             return services;
         }
     }

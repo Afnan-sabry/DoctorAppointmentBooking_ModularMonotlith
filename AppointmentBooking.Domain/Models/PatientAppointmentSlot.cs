@@ -12,6 +12,8 @@ namespace AppointmentBooking.Domain.Models
         public Guid AppointmentSlotId { get; set; }
         public Guid PatientId { get; set; }
         public DateTime ReservedAt { get; set; }
+        public int Status { get; set; }
+
         public Patient Patient { get; set; }
     }
 }

@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 namespace AppointmentBooking.Application.Commands.BookAppointment
 {
     public record AppointmentBookedNotification(AppointmentSlotBooked AppointmentSlotBooked) :INotification;
-    public class AppointmentBookedNotificationHandler(AppointmentBookedNotification notification) : INotificationHandler<AppointmentBookedNotification>
+    public class AppointmentBookedNotificationHandler() : INotificationHandler<AppointmentBookedNotification>
     {
         public async Task Handle(AppointmentBookedNotification notification, CancellationToken cancellationToken)
         {
             var rabbitMQPublisher = new RabbitMqPublisher();
-            await rabbitMQPublisher.PublishMessageAsync<AppointmentSlotBooked>(notification.AppointmentSlotBooked, RabbitMQQueues.AppointmentBooked);
+            await rabbitMQPublisher.PublishMessageAsync<AppointmentSlotBooked>( RabbitMQQueues.AppointmentBooked, notification.AppointmentSlotBooked);
         }
     }
 

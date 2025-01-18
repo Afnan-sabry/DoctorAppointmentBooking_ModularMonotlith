@@ -5,6 +5,7 @@ using DoctorAvailability.API;
 using DoctorAvailability.DAL.Persistence;
 using Microsoft.EntityFrameworkCore;
 using DoctorAvailability.BLL.Interfaces;
+using System.Diagnostics;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,16 +14,26 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDoctorAvailabilityModule(builder.Configuration);
-builder.Services.AddDoctorAppointmentManagementModule(builder.Configuration);
-builder.Services.AddAppointmentBookingModule(builder.Configuration);
-await builder.Services.AddAppointmentConfirmationModule(builder.Configuration);
+//Debugger.Launch();
+try
+{
+    builder.Services.AddDoctorAvailabilityModule(builder.Configuration);
+    builder.Services.AddDoctorAppointmentManagementModule(builder.Configuration);
+    builder.Services.AddAppointmentBookingModule(builder.Configuration);
+     builder.Services.AddAppointmentConfirmationModule(builder.Configuration);
+}
+catch (Exception ex)
+{
+
+	throw;
+}
+
 
 //builder.Services.AddDbContext<DoctorAvailabilityDBContext>(m => m.UseSqlServer(builder.Configuration
 //    .GetConnectionString("Default")));
 
 var app = builder.Build();
-await DoctorAvailabilityModuleExtension.Initialize(app);
+ DoctorAvailabilityModuleExtension.Initialize(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

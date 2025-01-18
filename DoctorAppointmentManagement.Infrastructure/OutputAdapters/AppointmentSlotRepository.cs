@@ -37,7 +37,7 @@ namespace DoctorAppointmentManagement.Adapters.Adapters.OutputAdapters
       public async Task UpdateAppointmentSlotStatus(Guid appointmentdSlotId, AppointmentSlotStatus status)
         {
            RabbitMqPublisher rabbitMQPublisher = new();
-            await rabbitMQPublisher.PublishMessageAsync<AppointmentSlotStatusUpdated>(new() {AppointmentSlotId= appointmentdSlotId,Status= (int)status }, RabbitMQQueues.AppointmentStatusUpdated);
+            await rabbitMQPublisher.PublishMessageAsync<AppointmentSlotStatusUpdated>(RabbitMQQueues.AppointmentStatusUpdated, new() { AppointmentSlotId = appointmentdSlotId, Status = (int)status });
            
 
         }
