@@ -46,14 +46,7 @@ namespace DoctorAvailability.API
                          appointmentSlotService.BookAppointmentSlot(message.AppointmentSlotId);
                      });
 
-                await _subscriber.Subscribe<AppointmentSlotStatusUpdated>(
-                    RabbitMQQueues.AppointmentStatusUpdated,
-                    async message =>
-                    {
-                        Console.WriteLine($"AppointmentStatusUpdated  received: {message.AppointmentSlotId}");
-                        // Process the message
-                        await appointmentSlotService.BookAppointmentSlot(message.AppointmentSlotId);
-                    });
+          
 
             }
             catch (Exception ex)

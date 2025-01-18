@@ -49,15 +49,6 @@ namespace DoctorAvailability.DAL.Repositories.AppointmentSlotRepository
             return true;
         }
 
-        public async Task<bool> UpdateAppointmentSlotStatus(Guid slotId,int status)
-        {
-            var slot = await dbContext.AppointmentSlots.FirstOrDefaultAsync(a => a.Id == slotId);
-            if (slot == null) return false;
-            slot.IsReserved = false;
-            slot.Status = status;
-            await dbContext.SaveChangesAsync();
-
-            return true;
-        }
+       
     }
 }

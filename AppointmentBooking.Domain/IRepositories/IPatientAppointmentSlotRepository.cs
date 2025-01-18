@@ -12,6 +12,8 @@ namespace AppointmentBooking.Domain.IRepositories
     {
         Task<bool> BookAppointmentSlot(PatientAppointmentSlot patientAppointmentSlot);
         Task<List<PatientAppointmentSlot>> GetPatientAppointmentSlots();
+        Task<bool> UpdateAppointmentSlotStatus(Guid slotId, string status);
+
 
     }
 }

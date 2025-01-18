@@ -34,6 +34,7 @@ catch (Exception ex)
 
 var app = builder.Build();
  DoctorAvailabilityModuleExtension.Initialize(app);
+AppointmentBookingModuleExtension.Initialize(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

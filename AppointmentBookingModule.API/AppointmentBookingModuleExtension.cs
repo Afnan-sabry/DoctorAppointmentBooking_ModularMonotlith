@@ -10,6 +10,10 @@ using System.Reflection;
 using AppointmentBooking.Application.Extensions;
 using AppointmentBooking.Application.Commands.BookAppointment;
 using MediatR;
+using Shared.Messaging.Contracts;
+using Shared.Messaging.Messaging;
+using Microsoft.AspNetCore.Builder;
+using AppointmentBooking.Domain.IRepositories;
 
 
 namespace AppointmentBookingModule.API
@@ -22,10 +26,40 @@ namespace AppointmentBookingModule.API
             services.AddAppointmentBookingInfrastructure(config);
             services.AddMediatR(configuration =>
             {
-            configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
 
             return services;
+        }
+
+        public static async Task Initialize(this IApplicationBuilder app)
+        {
+            try
+            {
+
+                // var appointmentSlotService = app.ApplicationServices.GetRequiredService<IAppointmentSlotService>();
+                //    var appointmentSlotService = app.ApplicationServices.GetRequiredService<IAppointmentSlotService>();
+                using var scope = app.ApplicationServices.CreateScope();
+                var appointmentSlotRepo = scope.ServiceProvider.GetRequiredService<IPatientAppointmentSlotRepository>();
+
+                RabbitMqSubscriber _subscriber = new();
+
+                await _subscriber.Subscribe<AppointmentSlotStatusUpdated>(
+            RabbitMQQueues.AppointmentStatusUpdated,
+            async message =>
+            {
+                Console.WriteLine($"AppointmentStatusUpdated  received: {message.AppointmentSlotId}");
+                // Process the message
+                await appointmentSlotRepo.UpdateAppointmentSlotStatus(message.AppointmentSlotId, message.Status);
+            });
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

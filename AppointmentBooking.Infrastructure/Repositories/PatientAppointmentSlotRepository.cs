@@ -25,5 +25,14 @@ namespace AppointmentBooking.Infrastructure.Repositories
         {
             return await context.PatientAppointmentSlots.ToListAsync();
         }
+        public async Task<bool> UpdateAppointmentSlotStatus(Guid slotId, string status)
+        {
+            var slot = await context.PatientAppointmentSlots.FirstOrDefaultAsync(a => a.Id == slotId);
+            if (slot == null) return false;
+            slot.Status = status;
+            await context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

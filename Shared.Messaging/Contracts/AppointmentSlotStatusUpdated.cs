@@ -10,6 +10,6 @@ namespace Shared.Messaging.Contracts
     {
         public Guid AppointmentSlotId { get; set; }
       //  public Guid PatientId { get; set; }
-        public int Status { get; set; }
+        public string Status { get; set; }
     }
 }

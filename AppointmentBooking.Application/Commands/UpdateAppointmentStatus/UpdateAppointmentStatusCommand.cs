@@ -11,9 +11,9 @@ namespace AppointmentBooking.Application.Commands.UpdateAppointmentStatus
     public record UpdateAppointmentStatusCommand(Guid AppointmentSlotId ,string Status):IRequest;
     public class UpdateAppointmentStatusCommandHandler(IPatientAppointmentSlotRepository patientAppointmentSlotRepository) : IRequestHandler<UpdateAppointmentStatusCommand>
     {
-        public Task Handle(UpdateAppointmentStatusCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateAppointmentStatusCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+           await patientAppointmentSlotRepository.UpdateAppointmentSlotStatus(request.AppointmentSlotId, request.Status);
         }
     }
 }
