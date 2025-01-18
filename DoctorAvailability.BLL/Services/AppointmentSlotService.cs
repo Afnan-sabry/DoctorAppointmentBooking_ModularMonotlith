@@ -52,11 +52,7 @@ namespace DoctorAvailability.BLL.Services
             return await appointmentSlotRepository.BookAppointmentSlotById(appointmentId);
 
         }
-        public async Task<bool> UpdateAppointmentSlotStatus(Guid appointmentId,int status)
-        {
-            return await appointmentSlotRepository.UpdateAppointmentSlotStatus(appointmentId,status);
 
-        }
 
         public async Task<Response<List<GetAppointmentSlotsResponseDto>>> GetAvailableAppointmentSlots()
         {

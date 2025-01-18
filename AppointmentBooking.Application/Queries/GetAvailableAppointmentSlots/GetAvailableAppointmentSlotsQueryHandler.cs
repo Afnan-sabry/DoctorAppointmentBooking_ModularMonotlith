@@ -17,7 +17,6 @@ namespace AppointmentBooking.Application.Queries.GetAvailableAppointmentSlots
 
         public async Task<Response<List<GetAvailableAppointmentSlotsResponse>>> Handle(GetAvailableAppointmentSlotsQuery request, CancellationToken cancellationToken)
         {
-            var ss = await patientAppointmentSlotRepository.GetPatientAppointmentSlots();
             var availableSlotsResponse = await bookingAppointmentSlotService.GetAvailableAppointmentSlots();
             if (!availableSlotsResponse.Succeeded) return new Response<List<GetAvailableAppointmentSlotsResponse>>([], false, availableSlotsResponse.Message);
 

@@ -12,7 +12,6 @@ namespace DoctorAvailability.BLL.Interfaces
     {
         public  Task<Response<Guid>> AddAppointmentSlot(AddAppointmentSlotDto model);
         Task<bool> BookAppointmentSlot(Guid appointmentId);
-        Task<bool> UpdateAppointmentSlotStatus(Guid appointmentId,int statusId);
         Task<Response<List<GetAppointmentSlotsResponseDto>>> GetAvailableAppointmentSlots();
         public  Task<Response< List<GetAppointmentSlotsResponseDto>>> GetDoctorAppointmentSlots(Guid doctorId);
         Task<Response<List<GetAppointmentSlotsResponseDto>>> GetDoctorUpcommingAppointmentSlots(Guid doctorId);
